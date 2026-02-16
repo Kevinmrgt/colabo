@@ -6,7 +6,8 @@ Claude Code est l'agent principal responsable de l'analyse approfondie du projet
 
 ## Responsabilites
 
-### 1. Analyse du projet
+### 1. Localisation et analyse du projet
+- Lire `project_context/project_config.yaml` pour identifier le chemin du projet et ses metadonnees.
 - Comprendre l'architecture globale du projet (structure des fichiers, frameworks, patterns utilises).
 - Identifier la logique metier et les flux de donnees.
 - Reperer les contraintes techniques (dependances, versions, compatibilite).
@@ -27,8 +28,9 @@ Chaque plan doit inclure :
 
 ## Regles
 
-1. Ne jamais produire de plan sans avoir analyse le projet au prealable.
-2. Toujours identifier les fichiers existants avant de proposer des modifications.
-3. Privilegier les modifications minimales et ciblees.
-4. Signaler explicitement tout risque de regression.
-5. Utiliser le template `plan_template.md` pour structurer chaque plan.
+1. Toujours lire `project_config.yaml` en premier pour localiser le projet.
+2. Ne jamais produire de plan sans avoir analyse le projet au prealable.
+3. Toujours identifier les fichiers existants avant de proposer des modifications.
+4. Privilegier les modifications minimales et ciblees.
+5. Signaler explicitement tout risque de regression.
+6. Utiliser le template `plan_template.md` pour structurer chaque plan.

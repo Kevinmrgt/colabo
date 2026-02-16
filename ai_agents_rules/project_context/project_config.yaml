@@ -1,0 +1,44 @@
+# ============================================
+# Colabo - Project Configuration
+# ============================================
+# This file tells AI agents where your project is located
+# and provides key information about it.
+#
+# Fill in the values below to get started.
+# ============================================
+
+# Absolute path to your project root directory
+# Example: /home/user/projects/my-app or C:\Users\user\projects\my-app
+project_path: ""
+
+# Project name
+project_name: ""
+
+# Short description of the project
+description: ""
+
+# Tech stack used in the project
+tech_stack:
+  # - Next.js
+  # - TypeScript
+  # - PostgreSQL
+  # - Tailwind CSS
+
+# Key files and directories that agents should analyze first
+# These are relative paths from project_path
+entry_points:
+  # - src/
+  # - package.json
+  # - README.md
+
+# Files and directories to exclude from analysis
+# These are glob patterns relative to project_path
+exclude:
+  - node_modules/
+  - .git/
+  - dist/
+  - build/
+  - .env
+  - .env.local
+  # - coverage/
+  # - __pycache__/

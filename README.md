@@ -25,21 +25,22 @@ You (request) --> Claude Code (analysis + plan) --> Execution Agents (implement)
 
 ## Quick Start
 
-### Option 1: Use as a GitHub Template
+### 1. Get Colabo
+
+**Option A: Use as a GitHub Template**
 
 1. Click **"Use this template"** on the GitHub repo page
 2. Name your new repository
 3. Clone it locally
-4. Add your project files alongside the `ai_agents_rules/` folder
 
-### Option 2: Clone directly
+**Option B: Clone directly**
 
 ```bash
 git clone https://github.com/Kevinmrgt/colabo.git my-project
 cd my-project
 ```
 
-### Option 3: Copy into an existing project
+**Option C: Copy into an existing project**
 
 ```bash
 # From your existing project root
@@ -48,6 +49,29 @@ cp -r /tmp/colabo/ai_agents_rules ./ai_agents_rules
 rm -rf /tmp/colabo
 ```
 
+### 2. Configure your project
+
+Edit `ai_agents_rules/project_context/project_config.yaml` to point to your project:
+
+```yaml
+project_path: "C:\\Users\\Kevin\\Projects\\my-app"
+project_name: "My App"
+description: "A task management web application"
+tech_stack:
+  - Next.js
+  - TypeScript
+  - PostgreSQL
+entry_points:
+  - src/
+  - package.json
+exclude:
+  - node_modules/
+  - .git/
+  - dist/
+```
+
+Your project can live anywhere on your filesystem. Agents will use this config to locate and analyze it.
+
 ## Project Structure
 
 ```
@@ -55,7 +79,8 @@ your-project/
 ├── ai_agents_rules/               # Colabo framework
 │   ├── README.md                  # Framework documentation
 │   ├── project_context/           # Your project description (source of truth)
-│   │   └── ROLE.md
+│   │   ├── ROLE.md
+│   │   └── project_config.yaml   # ** Point to your project here **
 │   ├── claude_code/               # Planner agent rules
 │   │   ├── ROLE.md
 │   │   └── plan_template.md
@@ -75,8 +100,9 @@ your-project/
 
 | Step | Who | What |
 |------|-----|------|
+| 0 | **You** | Configure `project_config.yaml` with your project path (once) |
 | 1 | **You** | Submit a request |
-| 2 | **All agents** | Read `project_context/` to understand the project |
+| 2 | **All agents** | Read `project_config.yaml` to locate and understand the project |
 | 3 | **Claude Code** | Analyzes the codebase and produces a detailed action plan |
 | 4 | **Execution agents** | Implement tasks strictly following the plan |
 | 5 | **All agents** | Log every change in `code_changes_log/` |
